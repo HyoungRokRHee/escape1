@@ -4,16 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Puzzle</title>
+    <style>
+        /* 가운데 정렬 및 모바일 친화적 스타일 */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #puzzleSection, #resultSection {
+            display: none; /* 초기에는 숨김 */
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 1em;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
+
     <h2>비밀번호 1234를 입력하세요</h2>
-   <img src="https://github.com/HyoungRokRHee/escape1/raw/main/puzzle1.png?raw=true" alt="Puzzle Image">
-    <p>정답을 입력하세요:</p>
-    <input type="text" id="answerInput">
-    <button onclick="checkAnswer()">확인</button>
+    <input type="text" id="passwordInput" placeholder="비밀번호 입력">
+    <button onclick="checkPassword()">확인</button>
+
+    <!-- 퍼즐과 정답 입력란은 비밀번호가 맞으면 표시 -->
+    <div id="puzzleSection">
+        <img src="https://github.com/HyoungRokRHee/escape1/raw/main/puzzle1.png?raw=true" alt="Puzzle Image">
+        <p>정답을 입력하세요:</p>
+        <input type="text" id="answerInput">
+        <button onclick="checkAnswer()">확인</button>
+    </div>
+
     <p id="result"></p>
 
     <script>
+        // 비밀번호 확인 함수
+        function checkPassword() {
+            const password = document.getElementById("passwordInput").value;
+            if (password === "1234") {
+                document.getElementById("puzzleSection").style.display = "block";
+                document.getElementById("passwordInput").style.display = "none";
+                document.querySelector("h2").textContent = "비밀번호가 확인되었습니다.";
+            } else {
+                alert("비밀번호가 틀렸습니다. 다시 시도하세요.");
+            }
+        }
+
+        // 정답 확인 함수
         function checkAnswer() {
             const answer = document.getElementById("answerInput").value.toUpperCase();
             const result = document.getElementById("result");
@@ -25,5 +70,6 @@
             }
         }
     </script>
+
 </body>
 </html>
