@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Puzzle</title>
+    <link href="https://fonts.googleapis.com/earlyaccess/dokdo.css" rel="stylesheet">
     <style>
         /* 전체 배경 이미지 설정 */
         body {
@@ -19,7 +20,8 @@
             margin: 0;
             color: white;
             text-align: center;
-            font-family: Arial, sans-serif;
+            font-family: 'Dokdo', sans-serif;
+            font-size: 1.2em;
         }
         #puzzleSection, #resultSection {
             display: none;
@@ -33,11 +35,15 @@
             font-size: 1em;
             margin: 10px 0;
         }
+        #result.success {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
-    <h2>비밀번호 1234를 입력하세요</h2>
+    <h2>비밀번호를 입력하세요</h2>
     <input type="text" id="passwordInput" placeholder="비밀번호 입력">
     <button onclick="checkPassword()">확인</button>
 
@@ -64,41 +70,16 @@
 
         function checkAnswer() {
             const answer = document.getElementById("answerInput").value.toUpperCase();
-
             if (answer === "LOGIN") {
-                // 새로운 창에서 배경 이미지와 빨간색 메시지 표시
-                const newWindow = window.open("", "_blank");
-                newWindow.document.write(`
-                    <html>
-                    <head>
-                        <title>정답 확인</title>
-                        <style>
-                            body {
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                height: 100vh;
-                                margin: 0;
-                                font-family: Arial, sans-serif;
-                                background-image: url('https://github.com/HyoungRokRHee/escape1/raw/main/whole.png?raw=true');
-                                background-size: cover;
-                                background-position: center;
-                                color: red;
-                                text-align: center;
-                            }
-                            h1 {
-                                color: red;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <h1>정답입니다! 2층 유치부로 가세요.</h1>
-                    </body>
-                    </html>
-                `);
+                document.body.innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; text-align: center;">
+                        <h1 style="color: red; font-size: 2em;">2층 유치부로 가세요.</h1>
+                    </div>
+                `;
             } else {
-                // 틀린 경우 현재 창에 메시지 표시
-                document.getElementById("result").textContent = "틀렸습니다. 다시 시도하세요.";
+                const result = document.getElementById("result");
+                result.textContent = "틀렸습니다. 다시 시도하세요.";
+                result.className = "";
             }
         }
     </script>
