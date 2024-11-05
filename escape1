@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>비밀번호 1234를 입력하세요</h2>
-    <img src="https://github.com/HyoungRokRHee/escape1/blob/main/%E1%84%87%E1%85%A1%E1%86%BC%E1%84%90%E1%85%A1%E1%86%AF%E1%84%8E%E1%85%AE%E1%86%AF1.png?raw=true" alt="Puzzle Image">
+    <img src=<img src="https://github.com/HyoungRokRHee/escape1/blob/main/방탈출1.png?raw=true" alt="Puzzle Image">>
     <p>정답을 입력하세요:</p>
     <input type="text" id="answerInput">
     <button onclick="checkAnswer()">확인</button>
