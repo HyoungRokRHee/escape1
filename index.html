@@ -37,7 +37,7 @@
 </head>
 <body>
 
-    <h2>비밀번호를 입력하세요</h2>
+    <h2>비밀번호 1234를 입력하세요</h2>
     <input type="text" id="passwordInput" placeholder="비밀번호 입력">
     <button onclick="checkPassword()">확인</button>
 
@@ -64,12 +64,13 @@
 
         function checkAnswer() {
             const answer = document.getElementById("answerInput").value.toUpperCase();
-            const result = document.getElementById("result");
 
             if (answer === "LOGIN") {
-                result.textContent = "정답입니다! 2층 유치부로 가세요.";
+                // 새로운 창에서 메시지 표시
+                window.open("", "_blank").document.write("<h1>정답입니다! 2층 유치부로 가세요.</h1>");
             } else {
-                result.textContent = "틀렸습니다. 다시 시도하세요.";
+                // 틀린 경우 현재 창에 메시지 표시
+                document.getElementById("result").textContent = "틀렸습니다. 다시 시도하세요.";
             }
         }
     </script>
