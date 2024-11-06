@@ -53,7 +53,7 @@
 </head>
 <body>
 
-    <h2 id="passwordMessage">비밀번호 1234를 입력하세요</h2>
+    <h2 id="passwordMessage">비밀번호를 입력하세요</h2>
     <input type="text" id="passwordInput" placeholder="비밀번호 입력">
     <button onclick="checkPassword()">확인</button>
 
@@ -69,7 +69,7 @@
     <script>
         function checkPassword() {
             const password = document.getElementById("passwordInput").value;
-            if (password === "1234") {
+            if (password === "2673") {
                 document.getElementById("puzzleSection").style.display = "block";
                 document.getElementById("passwordInput").style.display = "none";
                 document.querySelector("button").style.display = "none"; // 확인 버튼 숨기기
@@ -86,7 +86,7 @@
             if (answer === "LOGIN") {
                 document.body.innerHTML = `
                     <div style="display: flex; align-items: center; justify-content: center; height: 100vh; text-align: center; background-image: url('https://github.com/HyoungRokRHee/escape1/raw/main/whole.png?raw=true'); background-size: cover;">
-                        <h1 style="color: red; font-size: 2em;">정답입니다! 2층 유치부로 가세요.</h1>
+                        <h1 style="color: red; font-size: 2em;">2층 유치부로 가세요.</h1>
                     </div>
                 `;
             } else {
