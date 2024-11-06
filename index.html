@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Puzzle</title>
-    <link href="https://fonts.googleapis.com/earlyaccess/dokdo.css" rel="stylesheet">
     <style>
+        /* 독도체 폰트 불러오기 */
+        @font-face {
+            font-family: 'Dokdo';
+            src: url('./fonts/Dokdo-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         /* 전체 배경 이미지 설정 */
         body {
             background-image: url('https://github.com/HyoungRokRHee/escape1/raw/main/whole.png?raw=true');
@@ -35,6 +42,9 @@
             font-size: 1em;
             margin: 10px 0;
         }
+        h2 {
+            margin-top: 50px;
+        }
         #result.success {
             color: red;
             font-weight: bold;
@@ -43,7 +53,7 @@
 </head>
 <body>
 
-    <h2>비밀번호를 입력하세요</h2>
+    <h2 id="passwordMessage">비밀번호 1234를 입력하세요</h2>
     <input type="text" id="passwordInput" placeholder="비밀번호 입력">
     <button onclick="checkPassword()">확인</button>
 
@@ -62,7 +72,10 @@
             if (password === "1234") {
                 document.getElementById("puzzleSection").style.display = "block";
                 document.getElementById("passwordInput").style.display = "none";
-                document.querySelector("h2").textContent = "비밀번호가 확인되었습니다.";
+                document.querySelector("button").style.display = "none"; // 확인 버튼 숨기기
+                const passwordMessage = document.getElementById("passwordMessage");
+                passwordMessage.textContent = "비밀번호가 확인되었습니다.";
+                passwordMessage.style.marginTop = "20px"; // 아래로 내리기
             } else {
                 alert("비밀번호가 틀렸습니다. 다시 시도하세요.");
             }
@@ -72,8 +85,8 @@
             const answer = document.getElementById("answerInput").value.toUpperCase();
             if (answer === "LOGIN") {
                 document.body.innerHTML = `
-                    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; text-align: center;">
-                        <h1 style="color: red; font-size: 2em;">2층 유치부로 가세요.</h1>
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; text-align: center; background-image: url('https://github.com/HyoungRokRHee/escape1/raw/main/whole.png?raw=true'); background-size: cover;">
+                        <h1 style="color: red; font-size: 2em;">정답입니다! 2층 유치부로 가세요.</h1>
                     </div>
                 `;
             } else {
